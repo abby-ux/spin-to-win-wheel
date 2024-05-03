@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Spin To Win: Slate Pickleball Club
+        </title>
+        <link rel="stylesheet" href="spin.css">
+    </head>
+    <body class="container">
+        <nav class="navbar">
+            <ul class="navbar-list">
+                <!-- <li></li>
+                <li></li> -->
+            </ul>
+        </nav>
+        <div class="spin-to-win">
+            <div class="wheel-container">
+                <canvas id="wheel" width="400" height="400"></canvas>
+                <img src="wheel-pointer.png" alt="">
+            </div>
+            <div class="signup-container">
+                <h2>Enter your email and test your luck!</h2>
+                <h3>Spin to Win - Slate Pickleball Club</h3>
+                <div class="signup">
+
+                    <input type="text" id="name" placeholder="Enter your name in here.">
+                    <input type="text" id="email" placeholder="Enter your email in here.">
+                    <button class="submit-btn" onclick="spin()">Submit and Spin</button>
+                </div>
+                <div id="landed-on">
+                    Sign up to spin the wheel.
+                </div>
+            </div>
+        </div>
+        <script src="spin.js"></script>
+    </body>
+</html>

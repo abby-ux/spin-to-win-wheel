@@ -1,0 +1,150 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #3f305e, #223251);
+}
+
+input {
+    /* makes the item flexible with a ratio of 1 for flex-grow, flex-shrink */
+    flex: 1;
+    /* border: 5px; */
+    background: transparent;
+    outline: none;
+    padding: 10px;
+    /* Add border properties */
+    border: 1px solid black; /* thin black line */
+    border-radius: 5px; /* slightly rounded corners */
+}
+
+.submit-btn{
+    background: white;
+    color: #222;
+    font-weight: 500;
+    width: 100%;
+    max-width: 150px;
+    border: 1px solid #222;
+    padding: 10px;
+    margin: 10px 0;
+    text-align: center;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+.submit-btn:hover:not([disabled]) {
+    background: #222;
+    color: white;
+}
+.submit-btn:disabled{
+    cursor: no-drop;
+}
+
+.spin-to-win {
+    background: rgb(255, 255, 255, .75);
+    position: absolute;
+    transform: (-50%, -50%);
+    width: 100%;
+    max-width: 600px;
+    max-height: 100vh;
+    top: 5%;
+    /* left: 50%; */
+    padding: 30px;
+    border-radius: 5%;
+    box-shadow: 0 4px 5px #0c1526;
+    padding-bottom: 20px;
+    margin-bottom: 200px;
+}
+
+.wheel-container {
+    position: relative;
+    width: 100%;
+    height: 100%; 
+    /* border-radius: 50%; 
+    background-color: #f0f0f0; 
+    margin-bottom: 20px; 
+    overflow: hidden;  */
+}
+
+#wheel {
+    max-height: inherit;
+    width: inherit;
+
+}
+@keyframes rotate {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+#submit-btn {
+    position: absolute;
+}
+img {
+    width: 20%;
+    position: absolute;
+    left: 40%;
+    top: 33%;
+    transform: rotate(180deg);
+}
+
+.signup-container {
+    padding-bottom: 30px;
+}
+
+.spin-section {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* clip-path: polygon(50% 50%, 0 0, 100% 0); Use clip-path to create triangular sections */
+    transform-origin: 50% 100%; /* Set the rotation origin to the bottom center */
+}
+
+.spin-section:nth-child(1) {
+    transform: rotate(0deg); /* Rotate the first section by 0 degrees */
+    background-color: #FF6347; /* Tomato */
+}
+
+.spin-section:nth-child(2) {
+    transform: rotate(60deg); /* Rotate the second section by 60 degrees */
+    background-color: #6495ED; /* CornflowerBlue */
+}
+
+.spin-section:nth-child(3) {
+    transform: rotate(120deg); /* Rotate the third section by 120 degrees */
+    background-color: #32CD32; /* LimeGreen */
+}
+
+.spin-section:nth-child(4) {
+    transform: rotate(180deg); /* Rotate the fourth section by 180 degrees */
+    background-color: #FF8C00; /* DarkOrange */
+}
+
+.spin-section:nth-child(5) {
+    transform: rotate(240deg); /* Rotate the fifth section by 240 degrees */
+    background-color: #9370DB; /* MediumPurple */
+}
+
+.spin-section:nth-child(6) {
+    transform: rotate(300deg); /* Rotate the sixth section by 300 degrees */
+    background-color: #20B2AA; /* LightSeaGreen */
+}
+
+.spin-section p {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-30deg); /* Rotate the text to align with the section */
+    font-size: 12px;
+    text-align: center;
+    width: 100px; /* Set the width of the text container */
+    line-height: 1.2; /* Adjust line height for better alignment */
+}
