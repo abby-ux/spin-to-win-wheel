@@ -4,6 +4,7 @@ const landedOn = document.getElementById("landed-on");
 const spinBtn = document.querySelector(".submit-btn");
 const nameInput = document.getElementById("name");
 const emailInput = document.getElementById("email");
+const textLabelsContainer = document.getElementById("text-labels");
 
 const sections = [
     { label: "Free Lesson", color: "#FF6347" },
@@ -36,18 +37,39 @@ function drawWheel() {
         ctx.fill();
     }
 
-    // Add text labels
-    ctx.fillStyle = "black";
-    ctx.font = "bold 8px Arial";
-    ctx.textBaseline = "middle";
-    ctx.textAlign = "center";
+    // // Add text labels
+    // ctx.fillStyle = "black";
+    // ctx.font = "bold 8px Arial";
+    // ctx.textBaseline = "middle";
+    // ctx.textAlign = "center";
+    // for (let i = 0; i < numSections; i++) {
+    //     // Add 0.5 so text will be centered
+    //     const angle = (i + 0.5) * (Math.PI * 2) / numSections;
+    //     // Calculate x and y position for the text
+    //     const x = centerX + Math.cos(angle) * (radius * 0.6);
+    //     const y = centerY + Math.sin(angle) * (radius * 0.6);
+    //     ctx.fillText(sections[i].label, x, y);
+    // }
+
+    // Loop through sections to create text labels
     for (let i = 0; i < numSections; i++) {
-        // Add 0.5 so text will be centered
         const angle = (i + 0.5) * (Math.PI * 2) / numSections;
-        // Calculate x and y position for the text
         const x = centerX + Math.cos(angle) * (radius * 0.6);
         const y = centerY + Math.sin(angle) * (radius * 0.6);
-        ctx.fillText(sections[i].label, x, y);
+
+        // Create a new text label element
+        const labelElement = document.createElement("div");
+        labelElement.textContent = sections[i].label;
+        labelElement.style.position = "absolute";
+        labelElement.style.left = x + "px";
+        labelElement.style.top = y + "px";
+        // Rotate the text label to align with the wheel section
+    const rotation = angle + Math.PI / 2; // Adjust rotation by 90 degrees
+    labelElement.style.transform = `translate(-50%, -50%) rotate(${rotation}rad)`;
+        // labelElement.style.transform = `translate(-50%, -50%) rotate(${0}rad)`;
+
+        // Append the text label to the container
+        textLabelsContainer.appendChild(labelElement);
     }
 }
 
@@ -55,6 +77,7 @@ function drawWheel() {
 drawWheel();
 
 
+// Function to animate the wheel spin
 // Function to animate the wheel spin
 function spin() {
     const animationDuration = 3000; // in milliseconds
@@ -69,14 +92,38 @@ function spin() {
 
         function animate(currentTime) {
             const elapsedTime = currentTime - startTime;
-            // Ration elapsed time : animationDuration
             const progress = Math.min(elapsedTime / animationDuration, 1);
-            // Calculate current angle of rotation
             const angle = startAngle - (startAngle - endAngle) * progress;
-wheel.style.transform = `rotate(${angle}deg)`;
+            wheel.style.transform = `rotate(${angle}deg)`;
+            const textLabels = document.querySelectorAll("#text-labels");
+            const numLabels = textLabels.length;
+            const anglePerLabel = 360 / numLabels;
+
+            textLabels.forEach((label, index) => {
+                const labelAngle = (angle + anglePerLabel * (index)) % 360;
+                const labelRotation = (labelAngle + 90) * Math.PI / 180; // Convert to radians and adjust by 90 degrees
+                const labelX = centerX + Math.cos(labelRotation) * (radius * 0.6);
+                const labelY = centerY + Math.sin(labelRotation) * (radius * 0.6);
+
+                label.style.transform = `translate(-50%, -50%) rotate(${angle}deg)`;
+                label.style.left = labelX + "px";
+                label.style.top = labelY + "px";
+            });
+
+            // console.log(textLabels);
+            // textLabels.forEach(label => {
+            //     label.style.transformOrigin = "center center"; // Set rotation origin to the center of the label
+            //     label.style.transform = `rotate(${angle}deg)`; // Translate to center and rotate
+            // });
 
 
-            // If animations isn't done recursively call the function
+            // // Rotate the text labels along with the wheel
+            // const labelRotation = angle * Math.PI / 180; // Convert to radians
+            // const textLabels = document.querySelectorAll(".text-label");
+            // textLabels.forEach(label => {
+            //     label.style.transform = `rotate(${-angle}deg)`; // Rotate in the opposite direction
+            // });
+
             if (progress < 1) {
                 requestAnimationFrame(animate);
             } else {
@@ -85,9 +132,9 @@ wheel.style.transform = `rotate(${angle}deg)`;
                 // Calculate the section index based on the final angle
                 const anglePerSection = 360 / numSections;
                 let sectionIndex = Math.floor(finalAngle / anglePerSection);
-                // Retrieve the corresponding label from the sections array
 
                 let landedOnLabel = "????";
+                // Determine the section label based on the final angle
                 if (finalAngle >= 270 && finalAngle <= 30){
                     landedOnLabel = "Free Cardio Pickelball Class"
                 } else if (finalAngle > 30 && finalAngle <= 90) {
@@ -105,10 +152,6 @@ wheel.style.transform = `rotate(${angle}deg)`;
                 else {
                     landedOnLabel = "Free 1 Hour Court Reservation";
                 }
-                // if (finalSngle > 60 && finalAngle <= 120){
-                //     landedOnLabel = "Free Cardio Pickelball Class"
-                // }
-                // const landedOnLabel = sections[sectionIndex].label;
                 // Update the #landed-on element with the correct value
                 landedOn.textContent = "Landed on: " + landedOnLabel + ". Final angle: " + finalAngle;
             }
@@ -117,6 +160,7 @@ wheel.style.transform = `rotate(${angle}deg)`;
         requestAnimationFrame(animate);
     }
 }
+
 
 
 // spinBtn.addEventListener("click", spin);

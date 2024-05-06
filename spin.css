@@ -87,64 +87,30 @@ input {
     position: absolute;
 }
 img {
-    width: 20%;
+    width: 15%;
     position: absolute;
-    left: 40%;
-    top: 33%;
+    left: 42.5%;
+    top: 38%;
     transform: rotate(180deg);
 }
+#text-labels {
+    position: absolute;
+    right: 87%;
+    height: 176%;
+    transform: translate(-50%, -50%);
+}
+
+#text-labels div {
+    font: bold 12px Arial;
+    color: black;
+    /* white-space: nowrap; */
+    transform-origin: center bottom;
+    text-align: center;
+}
+
 
 .signup-container {
     padding-bottom: 30px;
 }
 
-.spin-section {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    /* clip-path: polygon(50% 50%, 0 0, 100% 0); Use clip-path to create triangular sections */
-    transform-origin: 50% 100%; /* Set the rotation origin to the bottom center */
-}
 
-.spin-section:nth-child(1) {
-    transform: rotate(0deg); /* Rotate the first section by 0 degrees */
-    background-color: #FF6347; /* Tomato */
-}
-
-.spin-section:nth-child(2) {
-    transform: rotate(60deg); /* Rotate the second section by 60 degrees */
-    background-color: #6495ED; /* CornflowerBlue */
-}
-
-.spin-section:nth-child(3) {
-    transform: rotate(120deg); /* Rotate the third section by 120 degrees */
-    background-color: #32CD32; /* LimeGreen */
-}
-
-.spin-section:nth-child(4) {
-    transform: rotate(180deg); /* Rotate the fourth section by 180 degrees */
-    background-color: #FF8C00; /* DarkOrange */
-}
-
-.spin-section:nth-child(5) {
-    transform: rotate(240deg); /* Rotate the fifth section by 240 degrees */
-    background-color: #9370DB; /* MediumPurple */
-}
-
-.spin-section:nth-child(6) {
-    transform: rotate(300deg); /* Rotate the sixth section by 300 degrees */
-    background-color: #20B2AA; /* LightSeaGreen */
-}
-
-.spin-section p {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) rotate(-30deg); /* Rotate the text to align with the section */
-    font-size: 12px;
-    text-align: center;
-    width: 100px; /* Set the width of the text container */
-    line-height: 1.2; /* Adjust line height for better alignment */
-}
