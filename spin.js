@@ -65,7 +65,7 @@ function drawWheel() {
         labelElement.style.top = y + "px";
         // Rotate the text label to align with the wheel section
     const rotation = angle + Math.PI / 2; // Adjust rotation by 90 degrees
-    labelElement.style.transform = `translate(-50%, -50%) rotate(${rotation}rad)`;
+    labelElement.style.transform = `rotate(${rotation}rad)`;
         // labelElement.style.transform = `translate(-50%, -50%) rotate(${0}rad)`;
 
         // Append the text label to the container
@@ -96,18 +96,20 @@ function spin() {
             const angle = startAngle - (startAngle - endAngle) * progress;
             wheel.style.transform = `rotate(${angle}deg)`;
             const textLabels = document.querySelectorAll("#text-labels");
-            const numLabels = textLabels.length;
-            const anglePerLabel = 360 / numLabels;
+            // const numLabels = textLabels.length;
+            // const anglePerLabel = 360 / numLabels;
 
             textLabels.forEach((label, index) => {
-                const labelAngle = (angle + anglePerLabel * (index)) % 360;
-                const labelRotation = (labelAngle + 90) * Math.PI / 180; // Convert to radians and adjust by 90 degrees
-                const labelX = centerX + Math.cos(labelRotation) * (radius * 0.6);
-                const labelY = centerY + Math.sin(labelRotation) * (radius * 0.6);
+                // const labelAngle = (angle + anglePerLabel * (index)) % 360;
+                // const labelRotation = (labelAngle + 90) * Math.PI / 180; // Convert to radians and adjust by 90 degrees
+                // const labelX = centerX + Math.cos(labelRotation) * (radius * 0.6);
+                // const labelY = centerY + Math.sin(labelRotation) * (radius * 0.6);
 
-                label.style.transform = `translate(-50%, -50%) rotate(${angle}deg)`;
-                label.style.left = labelX + "px";
-                label.style.top = labelY + "px";
+                // label.style.left = labelX + "px";
+                // label.style.top = labelY + "px";
+
+                label.style.transform = `rotate(${angle}deg)`;
+                
             });
 
             // console.log(textLabels);

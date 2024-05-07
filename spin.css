@@ -95,9 +95,9 @@ img {
 }
 #text-labels {
     position: absolute;
-    right: 87%;
-    height: 176%;
-    transform: translate(-50%, -50%);
+    right: -;
+    /* height: 176%; */
+    transform: translate(-5%, -50%);
 }
 
 #text-labels div {
