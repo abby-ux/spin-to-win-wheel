@@ -86,7 +86,7 @@ input {
 #submit-btn {
     position: absolute;
 }
-img {
+.pointer {
     width: 15%;
     position: absolute;
     left: 42.5%;
@@ -95,8 +95,8 @@ img {
 }
 #text-labels {
     position: absolute;
-    right: -;
-    /* height: 176%; */
+    right: 67%;
+    height: 176%;
     transform: translate(-5%, -50%);
 }
 
